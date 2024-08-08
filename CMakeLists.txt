@@ -23,4 +23,8 @@ target_link_libraries(Alcia
         PRIVATE ftxui::screen
         PRIVATE ftxui::dom
         PRIVATE ftxui::component
+        PRIVATE Game
 )
+
+target_link_libraries(Game PRIVATE Player)
+
