@@ -5,6 +5,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include "Game.h"
 using namespace ftxui;
 
 /**
@@ -12,8 +13,8 @@ using namespace ftxui;
  */
 void play_game()
 {
-	std::cout << "Starting the game..." << std::endl;
-	// Add your game starting logic here
+	Game game;
+	game.run();
 }
 
 /**
