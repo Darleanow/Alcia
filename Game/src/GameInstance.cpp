@@ -1,6 +1,7 @@
 #include "GameInstance.h"
 
-GameInstance::GameInstance() = default;
+GameInstance::GameInstance(const Player& player)
+	: m_player(player){};
 
 GameInstance::~GameInstance() = default;
 

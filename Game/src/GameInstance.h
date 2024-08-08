@@ -1,11 +1,14 @@
 #pragma once
+#include "Player.h"
 #include "utils/EnumTypes.h"
-
 class GameInstance
 {
 public:
-	GameInstance();
+	explicit GameInstance(const Player& player);
 	~GameInstance();
 
 	void handle_action(EnumTypes::MenuAction action);
+
+private:
+	Player m_player;
 };
