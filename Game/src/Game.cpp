@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "ftxui/component/screen_interactive.hpp"
-#include "ftxui/dom/elements.hpp"
 #include <iostream>
 
 using namespace ftxui;
@@ -31,18 +30,45 @@ void Game::view_quests()
 	std::cout << "Viewing quests..." << std::endl;
 }
 
-Component Game::preview_view_inventory()
+Element Game::get_preview(const int selected_index) const
+{
+	auto create_preview =
+		[](const std::wstring& title, const std::wstring& description, Color color) {
+			return window(text(title) | center | bold,
+						  text(description) | center | ftxui::color(color)) |
+				   size(HEIGHT, EQUAL, 10) | flex;
+		};
+
+	switch(selected_index)
+	{
+	case 0: // Explore
+		return create_preview(L"Explore", L"Explore the vast world!", Color::Yellow);
+	case 1: // Nearby City
+		return create_preview(L"Search City", L"Find nearby cities to trade.", Color::Cyan);
+	case 2: // Quests
+		return create_preview(L"Quests", L"Check your active quests.", Color::Green);
+	case 3: // Inventory
+		return preview_view_inventory()->Render();
+	case 4: // Rest
+		return create_preview(L"Rest", L"Recover health and mana.", Color::Magenta);
+	case 5: // Save
+		return create_preview(L"Save Game", L"Save your current progress.", Color::Blue);
+	case 6: // Game Settings
+		return create_preview(L"Settings", L"Adjust game configurations.", Color::Red);
+	default:
+		return create_preview(L"No Preview", L"Select an option to see details.", Color::GrayDark);
+	}
+}
+
+Component Game::preview_view_inventory() const
 {
 	return Renderer([] {
-		return vbox({
-				   text(L"Inventory Preview") | bold | color(Color::Orange3) | center,
-				   separator(),
-				   text(L" - Sword of Strength") | color(Color::Orange1),
-				   text(L" - Shield of Fortitude") | color(Color::Orange1),
-				   text(L" - Potion of Healing") | color(Color::Orange1),
-				   text(L" - Magic Scroll") | color(Color::Orange1),
-			   }) |
-			   border;
+		return window(
+			text(L"Inventory Preview") | center | bold,
+			vbox({
+				separator(),
+				text(L"Your inventory is empty.") | vcenter | color(Color::RedLight),
+			}));
 	});
 }
 
@@ -50,44 +76,56 @@ void Game::display_menu()
 {
 	auto screen = ScreenInteractive::Fullscreen();
 
-	const std::vector<std::wstring> entries = {L"🌍 Explore",
-											   L"🏙  Search for a Nearby City",
-											   L"📜 View Quests",
+	const std::vector<std::wstring> menu_entries = {L"🌍 Explore",
+													L"🏙  Search for a Nearby City",
+													L"📜 View Quests",
+													L"📦 View Inventory",
+													L"🛏  Rest",
+													L"📝 Save Game",
+													L"⚙  Game Settings"};
+	int selected_index = 0;
 
-											   L"📦 View Inventory",
-											   L"🛏  Rest",
-											   L"📝 Save Game",
-											   L"⚙  Game Settings"};
-	int selected = 0;
+	// Configure Menu Options
+	auto menu_option = MenuOption();
+	menu_option.entries_option.animated_colors.foreground.Set(Color::White, Color::Orange1);
 
-	auto menu = Menu(&entries, &selected);
+	// Create Menu Component
+	auto menu = Menu(&menu_entries, &selected_index, menu_option);
 
-	auto container = Container::Vertical({
-		menu,
-	});
+	// Create UI Components
+	auto create_text_element =
+		[](const std::wstring& text, bool bold = false, Color color = Color::Default) {
+			return bold ? ftxui::text(text) | ftxui::bold | ftxui::color(color)
+						: ftxui::text(text) | ftxui::color(color);
+		};
 
-	auto main_component = Renderer(container, [&] {
-		auto title = text(L"Game Menu") | bold | color(Color::Orange3) | center | border;
-		auto stats_title =
-			text(L"Character Stats") | bold | color(Color::Orange3) | center | border;
+	auto title = create_text_element(L"Game Menu", true, Color::Orange1) | center | border;
+	auto stats_title =
+		create_text_element(L"Character Stats", true, Color::Orange3) | center | border;
 
-		auto stats = vbox({
-						 text(L"Name: Darleanow") | bold | color(Color::Orange1),
-						 text(L"Level: " + std::to_wstring(1)) | color(Color::Orange1),
-						 text(L"Health: " + std::to_wstring(100)) | color(Color::Orange1),
-						 text(L"Mana: " + std::to_wstring(50)) | color(Color::Orange1),
-						 text(L"Strength: " + std::to_wstring(20)) | color(Color::Orange1),
-						 text(L"Agility: " + std::to_wstring(15)) | color(Color::Orange1),
-						 text(L"Intelligence: " + std::to_wstring(5)) | color(Color::Orange1),
-					 }) |
-					 borderLight | flex;
+	auto stats =
+		vbox({
+			create_text_element(L"Name: ???", true, Color::Orange1),
+			create_text_element(L"Level: " + std::to_wstring(1), false, Color::Orange1),
+			create_text_element(L"Health: " + std::to_wstring(100), false, Color::Orange1),
+			create_text_element(L"Mana: " + std::to_wstring(50), false, Color::Orange1),
+			create_text_element(L"Strength: " + std::to_wstring(20), false, Color::Orange1),
+			create_text_element(L"Agility: " + std::to_wstring(15), false, Color::Orange1),
+			create_text_element(L"Intelligence: " + std::to_wstring(5), false, Color::Orange1),
+		}) |
+		flex;
 
-		auto preview = (selected == 1) ? preview_view_inventory()->Render() : text(L"") | flex;
+	// Fixed Size for Right Pane
+	auto right_pane_width = 50;
+
+	// Main Component Renderer
+	auto main_component = Renderer(menu, [&] {
+		auto preview = get_preview(selected_index) | flex;
 
 		return hbox({
 				   vbox({
 					   title,
-					   menu->Render() | borderLight | flex,
+					   menu->Render() | flex,
 				   }) | flex,
 				   separator(),
 				   vbox({
@@ -95,15 +133,16 @@ void Game::display_menu()
 					   stats,
 					   separator(),
 					   preview,
-				   }) | flex,
+				   }) | size(WIDTH, EQUAL, right_pane_width),
 			   }) |
 			   flex | border;
 	});
 
+	// Event Handling
 	main_component = CatchEvent(main_component, [&](const Event& event) {
 		if(event == Event::Return)
 		{
-			switch(selected)
+			switch(selected_index)
 			{
 			case 0:
 				save_game();
