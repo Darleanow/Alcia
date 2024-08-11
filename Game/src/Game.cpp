@@ -30,6 +30,11 @@ void Game::view_quests()
 	std::cout << "Viewing quests..." << std::endl;
 }
 
+void Game::search_for_monster()
+{
+	std::cout << "Searching for monsters..." << std::endl;
+}
+
 Element Game::get_preview(const int selected_index) const
 {
 	auto create_preview =
@@ -43,17 +48,19 @@ Element Game::get_preview(const int selected_index) const
 	{
 	case 0: // Explore
 		return create_preview(L"Explore", L"Explore the vast world!", Color::Yellow);
-	case 1: // Nearby City
+	case 1: // Search for Monster
+		return create_preview(L"Search for Monster", L"Hunt for dangerous creatures!", Color::Red);
+	case 2: // Nearby City
 		return create_preview(L"Search City", L"Find nearby cities to trade.", Color::Cyan);
-	case 2: // Quests
+	case 3: // Quests
 		return create_preview(L"Quests", L"Check your active quests.", Color::Green);
-	case 3: // Inventory
+	case 4: // Inventory
 		return preview_view_inventory()->Render();
-	case 4: // Rest
+	case 5: // Rest
 		return create_preview(L"Rest", L"Recover health and mana.", Color::Magenta);
-	case 5: // Save
+	case 6: // Save Game
 		return create_preview(L"Save Game", L"Save your current progress.", Color::Blue);
-	case 6: // Game Settings
+	case 7: // Game Settings
 		return create_preview(L"Settings", L"Adjust game configurations.", Color::Red);
 	default:
 		return create_preview(L"No Preview", L"Select an option to see details.", Color::GrayDark);
@@ -63,12 +70,11 @@ Element Game::get_preview(const int selected_index) const
 Component Game::preview_view_inventory() const
 {
 	return Renderer([] {
-		return window(
-			text(L"Inventory Preview") | center | bold,
-			vbox({
-				separator(),
-				text(L"Your inventory is empty.") | vcenter | color(Color::RedLight),
-			}));
+		return window(text(L"Inventory Preview") | center | bold,
+					  vbox({
+						  separator(),
+						  text(L"Your inventory is empty.") | vcenter | color(Color::RedLight),
+					  }));
 	});
 }
 
@@ -76,13 +82,18 @@ void Game::display_menu()
 {
 	auto screen = ScreenInteractive::Fullscreen();
 
-	const std::vector<std::wstring> menu_entries = {L"🌍 Explore",
-													L"🏙  Search for a Nearby City",
-													L"📜 View Quests",
-													L"📦 View Inventory",
-													L"🛏  Rest",
-													L"📝 Save Game",
-													L"⚙  Game Settings"};
+	// Combine all entries into a single list
+	const std::vector<std::wstring> menu_entries = {
+		L"🌍 Explore",
+		L"🦇 Search for Monster",
+		L"🏙  Search for a Nearby City",
+		L"📜 View Quests",
+		L"📦 View Inventory",
+		L"🛏  Rest",
+		L"📝 Save Game",
+		L"⚙  Game Settings"
+	};
+
 	int selected_index = 0;
 
 	// Configure Menu Options
@@ -126,6 +137,7 @@ void Game::display_menu()
 				   vbox({
 					   title,
 					   menu->Render() | flex,
+					   filler(),
 				   }) | flex,
 				   separator(),
 				   vbox({
@@ -148,21 +160,24 @@ void Game::display_menu()
 				save_game();
 				break;
 			case 1:
-				view_inventory();
+				search_for_monster();
 				break;
 			case 2:
-				view_quests();
-				break;
-			case 3:
 				// search_city();
 				break;
+			case 3:
+				view_quests();
+				break;
 			case 4:
-				// rest();
+				view_inventory();
 				break;
 			case 5:
-				// explore();
+				// rest();
 				break;
 			case 6:
+				save_game();
+				break;
+			case 7:
 				// game_settings();
 				break;
 			default:

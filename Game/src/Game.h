@@ -17,9 +17,11 @@ private:
 	void save_game();
 	void view_inventory();
 	void view_quests();
-	void display_menu();
+	void search_for_monster();
 
+	void display_menu();
 	Element get_preview(int selected_index) const;
 	Component preview_view_inventory() const;
+
 	GameInstance m_game_instance;
 };
