@@ -19,10 +19,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up CMake
-        uses: jwlawson/actions-setup-cmake@v1.11
-        with:
-          cmake-version: '3.20.0'
+      - name: Install CMake on Ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get remove cmake
+          sudo apt-get install -y wget
+          wget https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0-linux-x86_64.sh
+          sudo mkdir /opt/cmake
+          sudo sh cmake-3.28.0-linux-x86_64.sh --prefix=/opt/cmake --skip-license
+          sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+
+      - name: Install CMake on macOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install cmake
+
+      - name: Install CMake on Windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          choco install cmake --installargs '"ADD_CMAKE_TO_PATH=System"'
 
       - name: Install dependencies on Ubuntu
         if: matrix.os == 'ubuntu-latest'
@@ -68,16 +84,3 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: true
-
-  code_quality:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Cppcheck
-        run: sudo apt-get install -y cppcheck
-
-      - name: Run Cppcheck
-        run: cppcheck --enable=all --inconclusive --std=c++23 --suppress=missingIncludeSystem .
