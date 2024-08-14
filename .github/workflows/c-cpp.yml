@@ -76,14 +76,4 @@ jobs:
         run: |
           cd build
           lcov --capture --directory . --output-file coverage.info
-          lcov --remove coverage.info '/usr/*' --output-file coverage.info
-          lcov --list coverage.info
-
-      - name: Upload Coverage to Codecov
-        if: matrix.os != 'windows-latest'
-        uses: codecov/codecov-action@v3
-        with:
-          files: build/coverage.info
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: true
+          lcov --remove coverage.info '
