@@ -19,3 +19,7 @@ target_include_directories(Game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Player/src)
 
 target_link_libraries(Game PUBLIC Player)
+
+enable_testing()
+
+add_subdirectory(tests)

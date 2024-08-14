@@ -18,3 +18,7 @@ set(PLAYER
 add_library(Player STATIC ${PLAYER})
 
 target_include_directories(Player PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+enable_testing()
+
+add_subdirectory(tests)
