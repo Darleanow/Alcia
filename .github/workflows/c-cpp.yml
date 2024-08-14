@@ -60,8 +60,9 @@ jobs:
           choco install ninja
           choco install mingw
 
-      - name: Configure CMake
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G Ninja -DCOVERAGE=ON
+      - name: Configure CMake with Coverage
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G Ninja -DCOVERAGE=ON
 
       - name: Build
         run: cmake --build build
@@ -76,4 +77,14 @@ jobs:
         run: |
           cd build
           lcov --capture --directory . --output-file coverage.info
-          lcov --remove coverage.info '
+          lcov --remove coverage.info '/usr/*' --output-file coverage.info
+          lcov --list coverage.info
+
+      - name: Upload Coverage to Codecov
+        if: matrix.os != 'windows-latest'
+        uses: codecov/codecov-action@v3
+        with:
+          files: build/coverage.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
