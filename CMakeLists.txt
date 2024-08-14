@@ -4,6 +4,15 @@ project(Alcia)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    option(COVERAGE "Enable coverage reporting" OFF)
+    if(COVERAGE)
+        add_compile_options(--coverage -g -O0)
+        add_link_options(--coverage)
+    endif()
+endif()
+
+
 # FetchContent to include ftxui
 include(FetchContent)
 set(FETCHCONTENT_UPDATES_DISCONNECTED TRUE)
