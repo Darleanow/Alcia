@@ -8,14 +8,19 @@ Player::Player(const int health, const int defense, const int attack)
 
 Player::~Player() = default;
 
-[[nodiscard]] int Player::get_attack() const
+[[nodiscard]] int Player::get_health() const
 {
-	return m_attack;
+	return m_health.get_health();
 }
 
 [[nodiscard]] int Player::get_defense() const
 {
 	return m_defense;
+}
+
+[[nodiscard]] int Player::get_attack() const
+{
+	return m_attack;
 }
 
 [[nodiscard]] int Player::get_level() const
