@@ -83,16 +83,14 @@ void Game::display_menu()
 	auto screen = ScreenInteractive::Fullscreen();
 
 	// Combine all entries into a single list
-	const std::vector<std::wstring> menu_entries = {
-		L"🌍 Explore",
-		L"🦇 Search for Monster",
-		L"🏙  Search for a Nearby City",
-		L"📜 View Quests",
-		L"📦 View Inventory",
-		L"🛏  Rest",
-		L"📝 Save Game",
-		L"⚙  Game Settings"
-	};
+	const std::vector<std::wstring> menu_entries = {L"🌍 Explore",
+													L"🦇 Search for Monster",
+													L"🏙  Search for a Nearby City",
+													L"📜 View Quests",
+													L"📦 View Inventory",
+													L"🛏  Rest",
+													L"📝 Save Game",
+													L"⚙  Game Settings"};
 
 	int selected_index = 0;
 
@@ -117,10 +115,11 @@ void Game::display_menu()
 	auto stats =
 		vbox({
 			create_text_element(L"Name: ???", true, Color::Orange1),
-			create_text_element(L"Level: " + std::to_wstring(1), false, Color::Orange1),
-			create_text_element(L"Health: " + std::to_wstring(100), false, Color::Orange1),
+			create_text_element(L"Level: " + std::to_wstring(m_game_instance.get_player().get_level()), false, Color::Orange1),
+			create_text_element(L"Health: " + std::to_wstring(m_game_instance.get_player().get_health()), false, Color::Orange1),
 			create_text_element(L"Mana: " + std::to_wstring(50), false, Color::Orange1),
 			create_text_element(L"Strength: " + std::to_wstring(20), false, Color::Orange1),
+			create_text_element(L"Defense: " + std::to_wstring(m_game_instance.get_player().get_defense()), false, Color::Orange1),
 			create_text_element(L"Agility: " + std::to_wstring(15), false, Color::Orange1),
 			create_text_element(L"Intelligence: " + std::to_wstring(5), false, Color::Orange1),
 		}) |
