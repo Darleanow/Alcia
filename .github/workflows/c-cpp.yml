@@ -72,10 +72,23 @@ jobs:
           cd build
           ctest --output-on-failure
 
+      - name: Check for .gcda Files
+        run: |
+          cd build
+          find . -name "*.gcda" -print
+
       - name: List Coverage Files
         run: |
           cd build
           ls -alh
+
+      - name: Generate Coverage Report on Unix
+        if: matrix.os != 'windows-latest'
+        run: |
+          cd build
+          lcov --capture --directory . --output-file coverage.info --ignore-errors inconsistent,range
+          lcov --remove coverage.info '/usr/*' '*/googletest/*' --output-file coverage.info
+          lcov --list coverage.info
 
       - name: Upload Coverage to Codecov
         if: matrix.os != 'windows-latest'
@@ -87,12 +100,3 @@ jobs:
           fail_ci_if_error: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Upload Coverage to Codecov
-        if: matrix.os != 'windows-latest'
-        uses: codecov/codecov-action@v3
-        with:
-          files: build/coverage.info
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: true
