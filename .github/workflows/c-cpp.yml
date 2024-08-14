@@ -23,11 +23,14 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get remove cmake
+          sudo apt-get remove -y cmake
           sudo apt-get install -y wget
           wget https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0-linux-x86_64.sh
-          sudo mkdir /opt/cmake
+          sudo mkdir -p /opt/cmake
           sudo sh cmake-3.28.0-linux-x86_64.sh --prefix=/opt/cmake --skip-license
+          if [ -f "/usr/local/bin/cmake" ]; then
+            sudo rm /usr/local/bin/cmake
+          fi
           sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
       - name: Install CMake on macOS
