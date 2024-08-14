@@ -21,22 +21,28 @@ jobs:
 
       - name: Set up CMake
         uses: jwlawson/actions-setup-cmake@v1.11
+        with:
+          cmake-version: '3.20.0'
 
-      - name: Install dependencies
+      - name: Install dependencies on Ubuntu
+        if: matrix.os == 'ubuntu-latest'
         run: |
-          if [ ${{ matrix.os }} == 'ubuntu-latest' ]; then
-            sudo apt-get update
-            sudo apt-get install -y gcc g++ ninja-build lcov
-          elif [ ${{ matrix.os }} == 'macos-latest' ]; then
-            brew install gcc ninja lcov
-          elif [ ${{ matrix.os }} == 'windows-latest' ]; then
-            choco install ninja
-            choco install gcc
-          fi
+          sudo apt-get update
+          sudo apt-get install -y gcc g++ ninja-build lcov
+
+      - name: Install dependencies on macOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install gcc ninja lcov
+
+      - name: Install dependencies on Windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          choco install ninja
+          choco install mingw
 
       - name: Configure CMake
-        run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G Ninja
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G Ninja
 
       - name: Build
         run: cmake --build build
@@ -46,7 +52,7 @@ jobs:
           cd build
           ctest --output-on-failure
 
-      - name: Generate Coverage Report
+      - name: Generate Coverage Report on Unix
         if: matrix.os != 'windows-latest'
         run: |
           cd build
@@ -62,3 +68,16 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: true
+
+  code_quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Cppcheck
+        run: sudo apt-get install -y cppcheck
+
+      - name: Run Cppcheck
+        run: cppcheck --enable=all --inconclusive --std=c++23 --suppress=missingIncludeSystem .
