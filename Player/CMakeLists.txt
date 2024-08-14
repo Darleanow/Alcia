@@ -11,8 +11,8 @@ set(PLAYER
         src/Player.h
         src/EntityComponents/Health.cpp
         src/EntityComponents/Health.h
-        src/EntityComponents/Experience.cpp
-        src/EntityComponents/Experience.h
+        src/EntityComponents/Level.cpp
+        src/EntityComponents/Level.h
 )
 
 add_library(Player STATIC ${PLAYER})
