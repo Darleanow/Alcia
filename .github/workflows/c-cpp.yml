@@ -86,7 +86,7 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: |
           cd build
-          lcov --config-file ../.lcovrc --capture --directory . --output-file coverage.info
+          lcov --config-file ../.lcovrc --ignore-errors inconsistent --capture --directory . --output-file coverage.info
           lcov --list coverage.info
 
       - name: Upload Coverage to Codecov
