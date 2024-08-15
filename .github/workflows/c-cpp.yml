@@ -86,7 +86,7 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: |
           cd build
-          lcov --capture --directory . --output-file coverage.info --ignore-errors inconsistent,range
+          lcov --capture --directory . --output-file coverage.info --no-external --exclude '*_deps/googletest/*' --exclude '*/_deps/*' --ignore-errors inconsistent
           lcov --extract coverage.info '*/src/**' --output-file coverage.info
           lcov --list coverage.info
 
