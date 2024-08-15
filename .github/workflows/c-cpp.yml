@@ -87,7 +87,7 @@ jobs:
         run: |
           cd build
           lcov --capture --directory . --output-file coverage.info --ignore-errors inconsistent,range
-          lcov --remove coverage.info '/usr/*' '*/googletest/*' --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' '*/googletest/*' '*/ftxui/*' --output-file coverage.info
           lcov --list coverage.info
 
       - name: Upload Coverage to Codecov
