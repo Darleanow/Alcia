@@ -87,6 +87,7 @@ jobs:
         run: |
           cd build
           lcov --config-file ../.lcovrc --capture --directory . --output-file coverage.info --no-external
+          lcov --remove coverage.info '*/_deps/*' '*/googletest/*' '*/usr/*' --output-file coverage.info
           lcov --extract coverage.info '*/src/**' --output-file coverage.info
           lcov --list coverage.info
 
