@@ -86,11 +86,7 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: |
           cd build
-          lcov --capture --directory . --output-file coverage.info
-          lcov --remove coverage.info '/usr/*' \
-          --remove coverage.info "$(pwd)/_deps/googletest-src/*" \
-          --remove coverage.info "$(pwd)/_deps/*" \
-          --output-file coverage.info
+          lcov --config-file ../.lcovrc --capture --directory . --output-file coverage.info
           lcov --list coverage.info
 
       - name: Upload Coverage to Codecov
