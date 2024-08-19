@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
+#include "Game.h"
 
 TEST(UTGameInstance, test_gtesta) {
-  EXPECT_EQ(1,1);
-  EXPECT_LT(1,2);
+  Game game;
+  GameInstance instance(Player(100,5,5));
+
 }

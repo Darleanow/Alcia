@@ -1,7 +1,11 @@
 #include <gtest/gtest.h>
+#include "Player.h"
 
 TEST(UTPlayer, test_gtestb) {
-  EXPECT_EQ(1,1);
-  EXPECT_LT(1,2);
-  EXPECT_GT(2,1);
+  const Player player(100,5,5);
+
+  EXPECT_EQ(player.get_health(), 100);
+  EXPECT_EQ(player.get_defense(), 5);
+  EXPECT_EQ(player.get_attack(), 5);
+  EXPECT_EQ(player.get_level(), 1);
 }

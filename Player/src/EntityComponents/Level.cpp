@@ -8,7 +8,7 @@ Level::Level()
 
 Level::~Level() = default;
 
-void Level::add_experience(int amount)
+void Level::add_experience(const int amount)
 {
 	m_current_experience += amount;
 
