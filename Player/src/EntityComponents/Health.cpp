@@ -1,25 +1,30 @@
 #include "Health.h"
 
-Health::Health(int health)
-	: m_health(health)
+#include <algorithm>
+
+Health::Health(const int starting_health)
+	: m_health_amount(starting_health)
+	, m_max_health(starting_health)
 { }
 
 Health::~Health() = default;
 
-[[nodiscard]] int Health::get_health() const
+void Health::consume_health(const int amount_to_consume)
 {
-	return m_health;
+	m_health_amount = std::max(m_health_amount - amount_to_consume, 0);
 }
 
-void Health::add_health(int amount_to_add)
+void Health::add_health(const int amount_to_add)
 {
-	m_health += amount_to_add;
+	m_health_amount = std::min(m_health_amount + amount_to_add, m_max_health);
 }
 
-void Health::reduce_health(int amount_to_reduce_by)
+int Health::get_health_amount() const
 {
-	m_health -= amount_to_reduce_by;
+	return m_health_amount;
 }
 
-
-
+int Health::get_max_health_amount() const
+{
+	return m_max_health;
+}
