@@ -71,10 +71,10 @@ Component Game::preview_view_inventory() const
 {
 	return Renderer([] {
 		return window(text(L"Inventory Preview") | center | bold,
-					  vbox({
-						  separator(),
-						  text(L"Your inventory is empty.") | vcenter | color(Color::RedLight),
-					  }));
+					  {
+						  text(L"Your inventory is empty.") | color(Color::RedLight) | center,
+					  }) |
+			   size(HEIGHT, EQUAL, 10) | flex;
 	});
 }
 
