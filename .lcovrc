@@ -1,5 +1,0 @@
-geninfo_auto_base = 1
-geninfo_adjust_src_path = 1
-lcov_branch_coverage = 0
-exclude = /usr/*
-exclude = */_deps/*
