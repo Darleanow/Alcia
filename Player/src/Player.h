@@ -8,14 +8,17 @@
 class Player
 {
 public:
-	Player(int health, int defense, int attack);
+	Player(int health, int defense, int attack, int mana);
 	~Player();
 
-	[[nodiscard]] int get_health() const;
+	[[nodiscard]] int get_current_health() const;
+	[[nodiscard]] int get_max_health() const;
+
+
 	[[nodiscard]] int get_defense() const;
 	[[nodiscard]] int get_attack() const;
 
-	[[nodiscard]] int get_mana() const;
+	[[nodiscard]] int get_current_mana() const;
 	[[nodiscard]] int get_max_mana() const;
 
 	[[nodiscard]] int get_level() const;
