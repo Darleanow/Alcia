@@ -49,7 +49,7 @@ Element Game::get_preview(const int selected_index) const
 	case 0: // Explore
 		return create_preview(L"Explore", L"Explore the vast world!", Color::Yellow);
 	case 1: // Search for Monster
-		return create_preview(L"Search for Monster", L"Hunt for dangerous creatures!", Color::Red);
+		return create_preview(L"Search for Monsters", L"Hunt for dangerous creatures!", Color::Red);
 	case 2: // Nearby City
 		return create_preview(L"Search City", L"Find nearby cities to trade.", Color::Cyan);
 	case 3: // Quests
