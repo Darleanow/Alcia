@@ -1,6 +1,7 @@
 #pragma once
 #include "EntityComponents/Health.h"
 #include "EntityComponents/Level.h"
+#include "EntityComponents/Mana.h"
 
 // TODO(Darleanow): Use strong types for members
 
@@ -13,6 +14,10 @@ public:
 	[[nodiscard]] int get_health() const;
 	[[nodiscard]] int get_defense() const;
 	[[nodiscard]] int get_attack() const;
+
+	[[nodiscard]] int get_mana() const;
+	[[nodiscard]] int get_max_mana() const;
+
 	[[nodiscard]] int get_level() const;
 	[[nodiscard]] int get_experience() const;
 
@@ -20,5 +25,6 @@ private:
 	Health m_health;
 	int m_defense;
 	int m_attack;
+	Mana m_mana;
 	Level m_level;
 };

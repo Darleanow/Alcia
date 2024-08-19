@@ -23,6 +23,16 @@ int Player::get_attack() const
 	return m_attack;
 }
 
+int Player::get_mana() const
+{
+	return m_mana.get_mana_amount();
+}
+
+int Player::get_max_mana() const
+{
+	return m_mana.get_max_mana_amount();
+}
+
 int Player::get_level() const
 {
 	return m_level.get_level();
