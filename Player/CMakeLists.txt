@@ -13,6 +13,8 @@ set(PLAYER
         src/EntityComponents/Health.h
         src/EntityComponents/Level.cpp
         src/EntityComponents/Level.h
+        src/EntityComponents/Mana.h
+        src/EntityComponents/Mana.cpp
 )
 
 add_library(Player STATIC ${PLAYER})
