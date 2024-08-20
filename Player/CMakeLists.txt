@@ -19,6 +19,8 @@ set(PLAYER
         src/CharacterAttributes.h
         src/EntityComponents/Defense.cpp
         src/EntityComponents/Defense.h
+        src/EntityComponents/Strength.cpp
+        src/EntityComponents/Strength.h
 )
 
 add_library(Player STATIC ${PLAYER})

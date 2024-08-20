@@ -1,13 +1,15 @@
 #pragma once
 
+#include "EntityComponents/Defense.h"
 #include "EntityComponents/Health.h"
 #include "EntityComponents/Level.h"
 #include "EntityComponents/Mana.h"
+#include "EntityComponents/Strength.h"
 
 class CharacterAttributes
 {
 public:
-	CharacterAttributes(const Health& health, const Mana& mana, int attack, int defense);
+	CharacterAttributes(const Health& health, const Mana& mana, const Strength& strength, const Defense& defense);
 	~CharacterAttributes();
 
 	[[nodiscard]] int get_current_health() const;
@@ -16,7 +18,7 @@ public:
 	[[nodiscard]] int get_current_mana() const;
 	[[nodiscard]] int get_max_mana() const;
 
-	[[nodiscard]] int get_attack() const;
+	[[nodiscard]] int get_strength() const;
 	[[nodiscard]] int get_defense() const;
 
 	[[nodiscard]] int get_level() const;
@@ -25,7 +27,7 @@ public:
 private:
 	Health m_health;
 	Mana m_mana;
-	int m_attack;
-	int m_defense;
+	Strength m_strength;
+	Defense m_defense;
 	Level m_level;
 };

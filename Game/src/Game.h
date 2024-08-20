@@ -20,8 +20,8 @@ private:
 	void search_for_monster();
 
 	void display_menu();
-	Element get_preview(int selected_index) const;
-	Component preview_view_inventory() const;
+	[[nodiscard]] Element get_preview(int selected_index) const;
+	[[nodiscard]] Component preview_view_inventory() const;
 
 	GameInstance m_game_instance;
 };
