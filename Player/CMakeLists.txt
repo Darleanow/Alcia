@@ -15,6 +15,10 @@ set(PLAYER
         src/EntityComponents/Level.h
         src/EntityComponents/Mana.h
         src/EntityComponents/Mana.cpp
+        src/CharacterAttributes.cpp
+        src/CharacterAttributes.h
+        src/EntityComponents/Defense.cpp
+        src/EntityComponents/Defense.h
 )
 
 add_library(Player STATIC ${PLAYER})

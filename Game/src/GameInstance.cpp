@@ -7,6 +7,6 @@ GameInstance::~GameInstance() = default;
 
 void GameInstance::handle_action(EnumTypes::MenuAction action) { }
 
-const Player& GameInstance::get_player() const {
+Player& GameInstance::get_player() {
 	return m_player;
 }

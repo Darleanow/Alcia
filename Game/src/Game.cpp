@@ -5,7 +5,7 @@
 using namespace ftxui;
 
 Game::Game()
-	: m_game_instance(Player(100, 10, 10, 50))
+	: m_game_instance(Player(Health(100), 10, 10, Mana(50)))
 { }
 
 Game::~Game() = default;
@@ -116,24 +116,24 @@ void Game::display_menu()
 		vbox({
 			create_text_element(L"Name: ???", true, Color::Orange1),
 			create_text_element(L"Level: " +
-									std::to_wstring(m_game_instance.get_player().get_level()),
+									std::to_wstring(m_game_instance.get_player().attributes().get_level()),
 								false,
 								Color::Orange1),
 			create_text_element(
-				L"Health: " + std::to_wstring(m_game_instance.get_player().get_current_health()) +
-					L"/" + std::to_wstring(m_game_instance.get_player().get_max_health()),
+				L"Health: " + std::to_wstring(m_game_instance.get_player().attributes().get_current_health()) +
+					L"/" + std::to_wstring(m_game_instance.get_player().attributes().get_max_health()),
 				false,
 				Color::Orange1),
 
 			create_text_element(
-				L"Mana: " + std::to_wstring(m_game_instance.get_player().get_current_mana()) +
-					L"/" + std::to_wstring(m_game_instance.get_player().get_max_mana()),
+				L"Mana: " + std::to_wstring(m_game_instance.get_player().attributes().get_current_mana()) +
+					L"/" + std::to_wstring(m_game_instance.get_player().attributes().get_max_mana()),
 				false,
 				Color::Orange1),
 
 			create_text_element(L"Strength: " + std::to_wstring(20), false, Color::Orange1),
 			create_text_element(L"Defense: " +
-									std::to_wstring(m_game_instance.get_player().get_defense()),
+									std::to_wstring(m_game_instance.get_player().attributes().get_defense()),
 								false,
 								Color::Orange1),
 			create_text_element(L"Agility: " + std::to_wstring(15), false, Color::Orange1),

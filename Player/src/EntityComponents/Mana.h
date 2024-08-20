@@ -13,6 +13,6 @@ public:
 	[[nodiscard]] int get_max_mana_amount() const;
 
 private:
+	int m_current_mana;
 	int m_max_mana;
-	int m_mana_amount;
 };

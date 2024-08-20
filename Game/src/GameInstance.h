@@ -9,7 +9,7 @@ public:
 
 	void handle_action(EnumTypes::MenuAction action);
 
-	[[nodiscard]] const Player& get_player() const;
+	[[nodiscard]] Player& get_player();
 private:
 	Player m_player;
 };
