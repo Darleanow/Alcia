@@ -56,5 +56,12 @@ target_link_libraries(Alcia
         PRIVATE nlohmann_json::nlohmann_json
         PRIVATE Game
         PRIVATE Map
-        PRIVATE Utils
+)
+
+# Copy Data in the build folder
+add_custom_command(
+        TARGET Alcia POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/Data/Location.json
+        $<TARGET_FILE_DIR:Alcia>/Data/Location.json
 )
