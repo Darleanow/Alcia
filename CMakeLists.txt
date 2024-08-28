@@ -22,6 +22,10 @@ FetchContent_Declare(ftxui
 )
 FetchContent_MakeAvailable(ftxui)
 
+# FetchContent to include nlohmann::json
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+FetchContent_MakeAvailable(json)
+
 # FetchContent to include gtest
 FetchContent_Declare(
         googletest
@@ -31,6 +35,7 @@ FetchContent_MakeAvailable(googletest)
 
 # Include directories
 include_directories(${ftxui_SOURCE_DIR}/include)
+include_directories(${json_SOURCE_DIR}/include)
 
 # Add main executable
 add_executable(Alcia main.cpp)
@@ -41,11 +46,15 @@ enable_testing()
 # Add subdirectories for Game and Player
 add_subdirectory(Game)
 add_subdirectory(Player)
+add_subdirectory(Map)
 
 # Link ftxui libraries to the main executable
 target_link_libraries(Alcia
         PRIVATE ftxui::screen
         PRIVATE ftxui::dom
         PRIVATE ftxui::component
+        PRIVATE nlohmann_json::nlohmann_json
         PRIVATE Game
+        PRIVATE Map
+        PRIVATE Utils
 )
