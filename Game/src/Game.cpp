@@ -1,6 +1,7 @@
+#include <iostream>
+
 #include "Game.h"
 #include "ftxui/component/screen_interactive.hpp"
-#include <iostream>
 
 using namespace ftxui;
 

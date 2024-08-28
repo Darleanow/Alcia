@@ -1,6 +1,9 @@
 #pragma once
 #include "Player.h"
+#include "Map.h"
+
 #include "utils/EnumTypes.h"
+
 class GameInstance
 {
 public:
@@ -12,4 +15,5 @@ public:
 	[[nodiscard]] Player& get_player();
 private:
 	Player m_player;
+	Map m_map;
 };

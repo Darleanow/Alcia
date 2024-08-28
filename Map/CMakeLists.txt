@@ -24,8 +24,6 @@ add_library(Map STATIC ${MAP})
 
 # target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Player/src)
 
-target_link_libraries(Map PUBLIC Utils)
-
 enable_testing()
 
 # add_subdirectory(tests)
