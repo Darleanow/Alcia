@@ -39,7 +39,7 @@ void Game::search_for_monster()
 Element Game::get_preview(const int selected_index) const
 {
 	auto create_preview =
-		[](const std::wstring& title, const std::wstring& description, Color color) {
+		[](const std::wstring& title, const std::wstring& description, const Color& color) {
 			return window(text(title) | center | bold,
 						  text(description) | center | ftxui::color(color)) |
 				   size(HEIGHT, EQUAL, 10) | flex;
@@ -100,14 +100,15 @@ void Game::display_menu()
 	menu_option.entries_option.animated_colors.foreground.Set(Color::White, Color::Orange1);
 
 	// Create Menu Component
-	auto menu = Menu(&menu_entries, &selected_index, menu_option);
+	const auto menu = Menu(&menu_entries, &selected_index, menu_option);
 
 	// Create UI Components
-	auto create_text_element =
-		[](const std::wstring& text, bool bold = false, Color color = Color::Default) {
-			return bold ? ftxui::text(text) | ftxui::bold | ftxui::color(color)
-						: ftxui::text(text) | ftxui::color(color);
-		};
+	auto create_text_element = [](const std::wstring& text,
+								  const bool& bold = false,
+								  const Color& color = Color::Default) {
+		return bold ? ftxui::text(text) | ftxui::bold | ftxui::color(color)
+					: ftxui::text(text) | ftxui::color(color);
+	};
 
 	auto title = create_text_element(L"Game Menu", true, Color::Orange1) | center | border;
 	auto stats_title =
@@ -154,7 +155,7 @@ void Game::display_menu()
 		flex;
 
 	// Fixed Size for Right Pane
-	auto right_pane_width = 50;
+	constexpr auto right_pane_width = 50;
 
 	// Main Component Renderer
 	auto main_component = Renderer(menu, [&] {

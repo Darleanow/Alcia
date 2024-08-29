@@ -3,8 +3,8 @@
 #include <algorithm>
 
 Mana::Mana(const int starting_mana)
-	: m_max_mana(starting_mana)
-	, m_current_mana(starting_mana)
+	: m_current_mana(starting_mana)
+	, m_max_mana(starting_mana)
 { }
 
 Mana::~Mana() = default;

@@ -6,7 +6,6 @@
 
 class Location
 {
-public:
 private:
 	std::string m_name;
 	std::string m_type;

@@ -54,7 +54,7 @@ int main()
 
 	auto menu = Menu(&entries, &selected);
 
-	auto container = Container::Vertical({menu});
+	const auto container = Container::Vertical({menu});
 
 	auto main_component = Renderer(container, [&] {
 		return vbox({text(title) | bold | color(Color::Orange3) | border,

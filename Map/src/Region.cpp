@@ -7,9 +7,7 @@ Region::Region(const nlohmann::json& region_data)
 	, m_climate(region_data["climate"])
 	, m_terrain(region_data["terrain"])
 {
-
-	const auto& json_object_subregions = region_data["subregions"];
-	for(const auto& json_object_subregion : json_object_subregions)
+	for(const auto& json_object_subregion : region_data["subregions"])
 	{
 		SubRegion subregion(json_object_subregion);
 		m_subregions.push_back(subregion);

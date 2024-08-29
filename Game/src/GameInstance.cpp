@@ -1,11 +1,12 @@
 #include "GameInstance.h"
 
 //TODO(Enzo): Remove this disgusting thing
-std::string WORLD_DATA = "./Data/Location.json";
+std::string world_data = "./Data/Location.json";
 
 GameInstance::GameInstance(const Player& player)
-	: m_player(player), m_map(WORLD_DATA)
-{};
+	: m_player(player)
+	, m_map(world_data)
+{ }
 
 GameInstance::~GameInstance() = default;
 
