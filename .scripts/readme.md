@@ -1,0 +1,11 @@
+# Utility Scripts
+
+Those scripts were used in large I/O operations that I was too busy to make, I'm keeping them because someone might need one of them maybe ?
+
+## convert_str_to_int.py
+
+This script was used to convert all strings from my json to integers where applicable.
+I dumbly made Health from Enemies.json initially a string.
+To use it, just rename within the script the input/output file.
+
+TODO(Enzo): Make this script useable with params xd.
