@@ -32,7 +32,8 @@ void MonsterRegistry::load_json_data(const std::string& json_load_data_file_path
 								  monster["description"],
 								  monster["health"],
 								  monster["strength"],
-								  monster["level"]);
+								  monster["level"],
+								  monster["rewards"]["experience"]);
 
 				const auto& subregion_name = subregion["name"];
 				const auto& monster_name = monster["name"];

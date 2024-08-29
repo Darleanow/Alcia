@@ -7,7 +7,7 @@
 class Enemy
 {
 public:
-	Enemy(std::string name, std::string description, int health, int strength, int level);
+	Enemy(std::string name, std::string description, int health, int strength, int level, int experience_reward);
 	~Enemy();
 
 private:
@@ -16,5 +16,6 @@ private:
 	int m_health;
 	int m_strength;
 	int m_level;
+	int m_experience_reward;
 	// todo(Enzo): Add loots here
 };
