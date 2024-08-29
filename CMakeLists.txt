@@ -47,6 +47,7 @@ enable_testing()
 add_subdirectory(Game)
 add_subdirectory(Player)
 add_subdirectory(Map)
+add_subdirectory(Enemies)
 
 # Link ftxui libraries to the main executable
 target_link_libraries(Alcia
@@ -56,6 +57,7 @@ target_link_libraries(Alcia
         PRIVATE nlohmann_json::nlohmann_json
         PRIVATE Game
         PRIVATE Map
+        PRIVATE Enemies
 )
 
 # Copy Data in the build folder
@@ -64,4 +66,7 @@ add_custom_command(
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_SOURCE_DIR}/Data/Location.json
         $<TARGET_FILE_DIR:Alcia>/Data/Location.json
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/Data/Enemies.json
+        $<TARGET_FILE_DIR:Alcia>/Data/Enemies.json
 )

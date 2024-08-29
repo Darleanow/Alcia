@@ -2,10 +2,12 @@
 
 //TODO(Enzo): Remove this disgusting thing
 std::string world_data = "./Data/Location.json";
+std::string enemies_data = "./Data/Enemies.json";
 
 GameInstance::GameInstance(const Player& player)
 	: m_player(player)
 	, m_map(world_data)
+	, m_monster_registry(enemies_data)
 { }
 
 GameInstance::~GameInstance() = default;
