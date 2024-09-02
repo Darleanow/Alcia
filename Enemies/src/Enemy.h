@@ -7,8 +7,19 @@
 class Enemy
 {
 public:
-	Enemy(std::string name, std::string description, int health, int strength, int level, int experience_reward);
+	Enemy(std::string name,
+		  std::string description,
+		  int health,
+		  int strength,
+		  int level,
+		  int experience_reward);
 	~Enemy();
+
+	[[nodiscard]] const std::string& get_name() const;
+	[[nodiscard]] const std::string& get_description() const;
+	[[nodiscard]] int get_health() const;
+	[[nodiscard]] int get_strength() const;
+	[[nodiscard]] int get_level() const;
 
 private:
 	std::string m_name;

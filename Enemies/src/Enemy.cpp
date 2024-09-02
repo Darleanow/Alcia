@@ -17,3 +17,28 @@ Enemy::Enemy(std::string name,
 { }
 
 Enemy::~Enemy() = default;
+
+const std::string& Enemy::get_name() const
+{
+	return m_name;
+}
+
+const std::string& Enemy::get_description() const
+{
+	return m_description;
+}
+
+int Enemy::get_health() const
+{
+	return m_health;
+}
+
+int Enemy::get_strength() const
+{
+	return m_strength;
+}
+
+int Enemy::get_level() const
+{
+	return m_level;
+}

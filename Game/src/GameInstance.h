@@ -2,6 +2,7 @@
 #include "Map.h"
 #include "MonsterRegistry.h"
 #include "Player.h"
+#include "Combat.h"
 #include "utils/EnumTypes.h"
 
 class GameInstance

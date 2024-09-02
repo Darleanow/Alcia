@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Game.h"
+#include "Combat.h"
 #include "ftxui/component/screen_interactive.hpp"
 
 using namespace ftxui;
@@ -33,7 +34,9 @@ void Game::view_quests()
 
 void Game::search_for_monster()
 {
-	std::cout << "Searching for monsters..." << std::endl;
+	Enemy enemy("Test", "Hello", 50,5,1,50 );
+	Combat combat(m_game_instance.get_player(), enemy);
+	combat.display_gui();
 }
 
 Element Game::get_preview(const int selected_index) const

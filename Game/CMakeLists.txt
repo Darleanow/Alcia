@@ -11,6 +11,8 @@ set(GAME
         src/GameInstance.cpp
         src/GameInstance.h
         src/utils/EnumTypes.h
+        src/Combat.cpp
+        src/Combat.h
 )
 
 add_library(Game STATIC ${GAME})
