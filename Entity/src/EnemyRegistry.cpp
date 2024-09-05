@@ -10,19 +10,11 @@ EnemyRegistry::~EnemyRegistry() = default;
 
 Enemy EnemyRegistry::search_monster_by_name(const std::string& search_name)
 {
-	// for(auto& [enemy, name, _region, _subregion] : m_enemies)
-	// {
-	// 	if(name == search_name)
-	// 	{
-	// 		return enemy;
-	// 	}
-	// }
-
-	for(const auto& elem : m_enemies)
+	for(auto& [enemy, name, _region, _subregion] : m_enemies)
 	{
-		if(elem.name == search_name)
+		if(name == search_name)
 		{
-			return elem.enemy;
+			return enemy;
 		}
 	}
 
