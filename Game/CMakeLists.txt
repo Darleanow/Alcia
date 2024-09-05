@@ -18,11 +18,11 @@ set(GAME
 add_library(Game STATIC ${GAME})
 
 target_include_directories(Game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Player/src)
+target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/ViewModels/src)
+target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Entity/src)
 target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Map/src)
-target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Enemies/src)
 
-target_link_libraries(Game PUBLIC Player Map Enemies)
+target_link_libraries(Game PUBLIC Entity ViewModels Map)
 
 enable_testing()
 

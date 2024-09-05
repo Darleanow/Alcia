@@ -11,6 +11,7 @@
                             "level": 3,
                             "strength": 4,
                             "health": 60,
+                            "defense": 3,
                             "rewards": {
                                 "experience": 40,
                                 "loot": [
@@ -28,6 +29,7 @@
                             "name": "Froztroll",
                             "level": 5,
                             "strength": 8,
+                            "defense": 5,
                             "health": 100,
                             "rewards": {
                                 "experience": 80,
@@ -46,6 +48,7 @@
                             "name": "Chillipede",
                             "level": 7,
                             "strength": 10,
+                            "defense": 8,
                             "health": 140,
                             "rewards": {
                                 "experience": 150,
@@ -64,6 +67,7 @@
                             "name": "Glacial Gnasher",
                             "level": 9,
                             "strength": 14,
+                            "defense": 11,
                             "health": 200,
                             "rewards": {
                                 "experience": 300,
@@ -82,6 +86,7 @@
                             "name": "Frostbitten Wolf",
                             "level": 11,
                             "strength": 18,
+                            "defense": 14,
                             "health": 250,
                             "rewards": {
                                 "experience": 600,
@@ -100,6 +105,7 @@
                             "name": "Yeti Junior",
                             "level": 13,
                             "strength": 22,
+                            "defense": 17,
                             "health": 300,
                             "rewards": {
                                 "experience": 1000,
@@ -118,6 +124,7 @@
                             "name": "Frost Elemental",
                             "level": 15,
                             "strength": 26,
+                            "defense": 20,
                             "health": 350,
                             "rewards": {
                                 "experience": 1500,
@@ -136,6 +143,7 @@
                             "name": "Ice Wraith",
                             "level": 17,
                             "strength": 30,
+                            "defense": 23,
                             "health": 400,
                             "rewards": {
                                 "experience": 2200,
@@ -154,6 +162,7 @@
                             "name": "Blizzard Serpent",
                             "level": 19,
                             "strength": 34,
+                            "defense": 26,
                             "health": 450,
                             "rewards": {
                                 "experience": 3000,
@@ -172,6 +181,7 @@
                             "name": "Frost Giant",
                             "level": 20,
                             "strength": 40,
+                            "defense": 29,
                             "health": 500,
                             "rewards": {
                                 "experience": 4000,
@@ -190,6 +200,7 @@
                             "name": "Frost Sprite",
                             "level": 4,
                             "strength": 6,
+                            "defense": 4,
                             "health": 70,
                             "rewards": {
                                 "experience": 50,
@@ -208,6 +219,7 @@
                             "name": "Icicle Imp",
                             "level": 6,
                             "strength": 9,
+                            "defense": 7,
                             "health": 110,
                             "rewards": {
                                 "experience": 100,
@@ -226,6 +238,7 @@
                             "name": "Polar Bear Cub",
                             "level": 8,
                             "strength": 12,
+                            "defense": 9,
                             "health": 160,
                             "rewards": {
                                 "experience": 200,
@@ -244,6 +257,7 @@
                             "name": "Ice Pixie",
                             "level": 10,
                             "strength": 15,
+                            "defense": 12,
                             "health": 210,
                             "rewards": {
                                 "experience": 350,
@@ -262,6 +276,7 @@
                             "name": "Winter Wolf",
                             "level": 12,
                             "strength": 19,
+                            "defense": 15,
                             "health": 260,
                             "rewards": {
                                 "experience": 700,
@@ -280,6 +295,7 @@
                             "name": "Frost Harpy",
                             "level": 14,
                             "strength": 23,
+                            "defense": 18,
                             "health": 320,
                             "rewards": {
                                 "experience": 1200,
@@ -298,6 +314,7 @@
                             "name": "Glacial Troll",
                             "level": 16,
                             "strength": 27,
+                            "defense": 21,
                             "health": 380,
                             "rewards": {
                                 "experience": 1700,
@@ -316,6 +333,7 @@
                             "name": "Frost Drake",
                             "level": 18,
                             "strength": 31,
+                            "defense": 24,
                             "health": 440,
                             "rewards": {
                                 "experience": 2400,
@@ -334,6 +352,7 @@
                             "name": "Snow Wyrm",
                             "level": 20,
                             "strength": 35,
+                            "defense": 27,
                             "health": 500,
                             "rewards": {
                                 "experience": 3300,
@@ -352,6 +371,7 @@
                             "name": "Ice Phantom",
                             "level": 22,
                             "strength": 38,
+                            "defense": 24,
                             "health": 560,
                             "rewards": {
                                 "experience": 4400,
@@ -370,6 +390,7 @@
                             "name": "Frozen Ghoul",
                             "level": 24,
                             "strength": 42,
+                            "defense": 32,
                             "health": 620,
                             "rewards": {
                                 "experience": 5600,
@@ -388,6 +409,7 @@
                             "name": "Ice Revenant",
                             "level": 26,
                             "strength": 46,
+                            "defense": 35,
                             "health": 680,
                             "rewards": {
                                 "experience": 6900,
@@ -406,6 +428,7 @@
                             "name": "Avalanche Beast",
                             "level": 28,
                             "strength": 50,
+                            "defense": 38,
                             "health": 740,
                             "rewards": {
                                 "experience": 8300,
@@ -424,6 +447,7 @@
                             "name": "Frost Titan",
                             "level": 30,
                             "strength": 54,
+                            "defense": 41,
                             "health": 800,
                             "rewards": {
                                 "experience": 9800,
@@ -442,6 +466,7 @@
                             "name": "Ice Hydra",
                             "level": 32,
                             "strength": 58,
+                            "defense": 44,
                             "health": 860,
                             "rewards": {
                                 "experience": 11400,
@@ -460,6 +485,7 @@
                             "name": "Blizzard Golem",
                             "level": 34,
                             "strength": 62,
+                            "defense": 48,
                             "health": 920,
                             "rewards": {
                                 "experience": 13100,
@@ -478,6 +504,7 @@
                             "name": "Frozen Lich",
                             "level": 36,
                             "strength": 66,
+                            "defense": 50,
                             "health": 980,
                             "rewards": {
                                 "experience": 14900,
@@ -496,6 +523,7 @@
                             "name": "Frost Wyrm",
                             "level": 38,
                             "strength": 70,
+                            "defense": 53,
                             "health": 1040,
                             "rewards": {
                                 "experience": 16800,
@@ -514,6 +542,7 @@
                             "name": "Ice Dragon",
                             "level": 40,
                             "strength": 74,
+                            "defense": 56,
                             "health": 1100,
                             "rewards": {
                                 "experience": 18800,
@@ -532,6 +561,7 @@
                             "name": "Blizzard Colossus",
                             "level": 45,
                             "strength": 84,
+                            "defense": 64,
                             "health": 1300,
                             "rewards": {
                                 "experience": 26000,
@@ -550,6 +580,7 @@
                             "name": "Frost King",
                             "level": 50,
                             "strength": 100,
+                            "defense": 74,
                             "health": 1500,
                             "rewards": {
                                 "experience": 40000,
@@ -573,6 +604,7 @@
                             "name": "Snowgoblin",
                             "level": 4,
                             "strength": 6,
+                            "defense": 4,
                             "health": 80,
                             "rewards": {
                                 "experience": 60,
@@ -591,6 +623,7 @@
                             "name": "Rockadile",
                             "level": 6,
                             "strength": 10,
+                            "defense": 7,
                             "health": 130,
                             "rewards": {
                                 "experience": 110,
@@ -609,6 +642,7 @@
                             "name": "Magma Muncher",
                             "level": 8,
                             "strength": 14,
+                            "defense": 11,
                             "health": 180,
                             "rewards": {
                                 "experience": 200,
@@ -627,6 +661,7 @@
                             "name": "Pineclops",
                             "level": 10,
                             "strength": 18,
+                            "defense": 14,
                             "health": 220,
                             "rewards": {
                                 "experience": 350,
@@ -645,6 +680,7 @@
                             "name": "Twig Titan",
                             "level": 12,
                             "strength": 22,
+                            "defense": 15,
                             "health": 280,
                             "rewards": {
                                 "experience": 700,
@@ -663,6 +699,7 @@
                             "name": "Boulderpede",
                             "level": 14,
                             "strength": 26,
+                            "defense": 19,
                             "health": 340,
                             "rewards": {
                                 "experience": 1200,
@@ -681,6 +718,7 @@
                             "name": "Molten Mole",
                             "level": 16,
                             "strength": 30,
+                            "defense": 22,
                             "health": 400,
                             "rewards": {
                                 "experience": 1800,
@@ -699,6 +737,7 @@
                             "name": "Thorny Tortoise",
                             "level": 18,
                             "strength": 34,
+                            "defense": 25,
                             "health": 460,
                             "rewards": {
                                 "experience": 2500,
@@ -717,6 +756,7 @@
                             "name": "Breeze Beast",
                             "level": 20,
                             "strength": 38,
+                            "defense": 28,
                             "health": 520,
                             "rewards": {
                                 "experience": 3200,
@@ -735,6 +775,7 @@
                             "name": "Sizzle Serpent",
                             "level": 22,
                             "strength": 42,
+                            "defense": 31,
                             "health": 580,
                             "rewards": {
                                 "experience": 4000,
@@ -753,6 +794,7 @@
                             "name": "Mudslap",
                             "level": 24,
                             "strength": 46,
+                            "defense": 29,
                             "health": 640,
                             "rewards": {
                                 "experience": 4900,
@@ -771,6 +813,7 @@
                             "name": "Thunderhoof",
                             "level": 26,
                             "strength": 50,
+                            "defense": 37,
                             "health": 700,
                             "rewards": {
                                 "experience": 5900,
@@ -789,6 +832,7 @@
                             "name": "Mossbeard",
                             "level": 28,
                             "strength": 54,
+                            "defense": 40,
                             "health": 760,
                             "rewards": {
                                 "experience": 7000,
@@ -807,6 +851,7 @@
                             "name": "Lavalisk",
                             "level": 30,
                             "strength": 58,
+                            "defense": 43,
                             "health": 820,
                             "rewards": {
                                 "experience": 8200,
@@ -825,6 +870,7 @@
                             "name": "Stormcrow",
                             "level": 32,
                             "strength": 62,
+                            "defense": 46,
                             "health": 880,
                             "rewards": {
                                 "experience": 9500,
@@ -843,6 +889,7 @@
                             "name": "Rubblewurm",
                             "level": 34,
                             "strength": 66,
+                            "defense": 49,
                             "health": 940,
                             "rewards": {
                                 "experience": 10900,
@@ -861,6 +908,7 @@
                             "name": "Mireling",
                             "level": 36,
                             "strength": 70,
+                            "defense": 52,
                             "health": 1000,
                             "rewards": {
                                 "experience": 12400,
@@ -879,6 +927,7 @@
                             "name": "Inferno Imp",
                             "level": 38,
                             "strength": 74,
+                            "defense": 57,
                             "health": 1060,
                             "rewards": {
                                 "experience": 14000,
@@ -897,6 +946,7 @@
                             "name": "Boulderback",
                             "level": 40,
                             "strength": 78,
+                            "defense": 59,
                             "health": 1120,
                             "rewards": {
                                 "experience": 15700,
@@ -915,6 +965,7 @@
                             "name": "Cinderclaw",
                             "level": 42,
                             "strength": 82,
+                            "defense": 61,
                             "health": 1180,
                             "rewards": {
                                 "experience": 17500,
@@ -933,6 +984,7 @@
                             "name": "Vortex Vulture",
                             "level": 44,
                             "strength": 86,
+                            "defense": 64,
                             "health": 1240,
                             "rewards": {
                                 "experience": 19400,
@@ -951,6 +1003,7 @@
                             "name": "Tar Kraken",
                             "level": 46,
                             "strength": 90,
+                            "defense": 69,
                             "health": 1300,
                             "rewards": {
                                 "experience": 21400,
@@ -969,6 +1022,7 @@
                             "name": "Flamechomp",
                             "level": 48,
                             "strength": 94,
+                            "defense": 71,
                             "health": 1360,
                             "rewards": {
                                 "experience": 23500,
@@ -987,6 +1041,7 @@
                             "name": "Ridgeback Rhino",
                             "level": 50,
                             "strength": 98,
+                            "defense": 78,
                             "health": 1420,
                             "rewards": {
                                 "experience": 25700,
@@ -1005,6 +1060,7 @@
                             "name": "Ashen Stalker",
                             "level": 52,
                             "strength": 102,
+                            "defense": 79,
                             "health": 1480,
                             "rewards": {
                                 "experience": 28000,
@@ -1023,6 +1079,7 @@
                             "name": "Cragclaw",
                             "level": 54,
                             "strength": 106,
+                            "defense": 79,
                             "health": 1540,
                             "rewards": {
                                 "experience": 30400,
@@ -1041,6 +1098,7 @@
                             "name": "Blazebird",
                             "level": 56,
                             "strength": 110,
+                            "defense": 82,
                             "health": 1600,
                             "rewards": {
                                 "experience": 32900,
@@ -1059,6 +1117,7 @@
                             "name": "Quakebear",
                             "level": 58,
                             "strength": 114,
+                            "defense": 84,
                             "health": 1660,
                             "rewards": {
                                 "experience": 35500,
@@ -1077,6 +1136,7 @@
                             "name": "Storm Serpent",
                             "level": 60,
                             "strength": 118,
+                            "defense": 90,
                             "health": 1720,
                             "rewards": {
                                 "experience": 38200,
@@ -1095,6 +1155,7 @@
                             "name": "Obsidian Colossus",
                             "level": 62,
                             "strength": 122,
+                            "defense": 95,
                             "health": 1780,
                             "rewards": {
                                 "experience": 41000,
@@ -1113,6 +1174,7 @@
                             "name": "Tremor Titan",
                             "level": 65,
                             "strength": 130,
+                            "defense": 98,
                             "health": 2000,
                             "rewards": {
                                 "experience": 45000,

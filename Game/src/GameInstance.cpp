@@ -18,3 +18,8 @@ Player& GameInstance::get_player()
 {
 	return m_player;
 }
+
+EnemyRegistry& GameInstance::get_enemies_registry()
+{
+	return m_monster_registry;
+}

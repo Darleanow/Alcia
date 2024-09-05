@@ -3,7 +3,6 @@
 #include "ftxui/component/component.hpp"
 #include "ftxui/dom/elements.hpp"
 
-using namespace ftxui;
 
 class Game
 {
@@ -14,14 +13,14 @@ public:
 	void run();
 
 private:
-	void save_game();
-	void view_inventory();
-	void view_quests();
+	static void save_game();
+	static void view_inventory();
+	static void view_quests();
 	void search_for_monster();
 
 	void display_menu();
-	[[nodiscard]] Element get_preview(int selected_index) const;
-	[[nodiscard]] Component preview_view_inventory() const;
+	[[nodiscard]] static ftxui::Element get_preview(int selected_index) ;
+	[[nodiscard]] static ftxui::Component preview_view_inventory() ;
 
 	GameInstance m_game_instance;
 };

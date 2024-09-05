@@ -4,13 +4,13 @@ project(Alcia)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     option(COVERAGE "Enable coverage reporting" OFF)
-    if(COVERAGE)
+    if (COVERAGE)
         add_compile_options(--coverage -g -O0)
         add_link_options(--coverage)
-    endif()
-endif()
+    endif ()
+endif ()
 
 
 # FetchContent to include ftxui
@@ -45,11 +45,10 @@ enable_testing()
 
 # Add subdirectories for Game and Player
 add_subdirectory(Game)
-add_subdirectory(Player)
 add_subdirectory(Map)
-add_subdirectory(Enemies)
+add_subdirectory(Entity)
+add_subdirectory(ViewModels)
 
-# Link ftxui libraries to the main executable
 target_link_libraries(Alcia
         PRIVATE ftxui::screen
         PRIVATE ftxui::dom
@@ -57,7 +56,8 @@ target_link_libraries(Alcia
         PRIVATE nlohmann_json::nlohmann_json
         PRIVATE Game
         PRIVATE Map
-        PRIVATE Enemies
+        PRIVATE Entity
+        PRIVATE ViewModels
 )
 
 # Copy Data in the build folder

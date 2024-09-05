@@ -5,15 +5,13 @@
 #include "ftxui/component/screen_interactive.hpp"
 #include "ftxui/dom/elements.hpp"
 
-using namespace ftxui;
-
 class Combat
 {
 public:
 	Combat(Player& player, Enemy& enemy);
 	~Combat();
 
-	void display_gui();
+	void display_gui() const;
 
 private:
 	Player& m_player;
@@ -21,13 +19,13 @@ private:
 
 	void handle_input();
 	void apply_damage();
-	void UpdateCombatLog(std::vector<std::string>& combat_log, const std::string& new_entry);
+	static void UpdateCombatLog(std::vector<std::string>& combat_log, const std::string& new_entry);
 
 	// UI
-	static Element CreatePlayerInfoPanel(Player& player);
-	static Element CreateEnemyInfoPanel(const Enemy& enemy);
-	static Element CreateCombatLogPanel(const std::vector<std::string>& combat_log);
-	Element CreateTitle();
-	static Component CreateActionMenu(const std::vector<std::string>& actions,
-									  int& selected_action);
+	static ftxui::Element CreatePlayerInfoPanel(Player& player);
+	static ftxui::Element CreateEnemyInfoPanel(Enemy& enemy);
+	static ftxui::Element CreateCombatLogPanel(const std::vector<std::string>& combat_log);
+	static ftxui::Element CreateTitle();
+	static ftxui::Component CreateActionMenu(const std::vector<std::string>& actions,
+											 int& selected_action);
 };

@@ -13,4 +13,17 @@ SubRegion::SubRegion(const nlohmann::json& subregion_data)
 	}
 }
 
+SubRegion::SubRegion(const std::string& subregion_name)
+	: m_name(subregion_name)
+	, m_type("nil")
+	, m_description("nil")
+	, m_population_count(0)
+{ }
+
 SubRegion::~SubRegion() = default;
+
+// Todo(Enzo): Might wanna enforce checks if this becomes used in other code parts besides the EnemyRegistry
+bool SubRegion::operator==(const SubRegion& rhs) const
+{
+	return m_name == rhs.m_name;
+}

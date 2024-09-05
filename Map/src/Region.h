@@ -5,7 +5,10 @@ class Region
 {
 public:
 	explicit Region(const nlohmann::json& region_data);
+	explicit Region(std::string name);
 	~Region();
+
+	std::string get_name() const;
 
 private:
 	std::string m_name;

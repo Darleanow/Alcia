@@ -1,55 +1,61 @@
 #include "Combat.h"
+#include "EnemyViewModel.h"
+#include "PlayerViewModel.h"
 #include <chrono>
-#include <codecvt>
-#include <locale>
 #include <thread>
+
+using namespace ftxui;
 
 // Constructor
 Combat::Combat(Player& player, Enemy& enemy)
 	: m_player(player)
 	, m_enemy(enemy)
-{
-	setlocale(LC_ALL, "en_US.UTF-8");
-}
+{ }
 
 Combat::~Combat() = default;
 
 // Helper function to create player info panel
 Element Combat::CreatePlayerInfoPanel(Player& player)
 {
-	const std::string health_icon = "❤ ";
-	const std::string mp_icon = "💧";
-	const std::string status_icon = "🌀";
-	const std::string strength_icon = "✊";
+	const std::string health_icon = "❤  ";
+	const std::string mp_icon = "💧 ";
+	const std::string status_icon = "🌀 ";
+	const std::string strength_icon = "✊ ";
+	const std::string defense_icon = "🛡  ";
 
-	return vbox({text("Player: ???") | bold | color(Color::Cyan),
-				 text(health_icon +
-					  " HP: " + std::to_string(player.attributes().get_current_health()) + " / " +
-					  std::to_string(player.attributes().get_max_health())) |
-					 color(Color::LightSalmon1),
-				 text(mp_icon + " MP: " + std::to_string(player.attributes().get_current_mana()) +
-					  " / " + std::to_string(player.attributes().get_max_mana())) |
-					 color(Color::LightCyan3),
-				 text(status_icon + " Status: None") | color(Color::LightYellow3),
-				 text(strength_icon +
-					  " Strength: " + std::to_string(player.attributes().get_strength())) |
-					 color(Color::LightSeaGreen)}) |
+	PlayerViewModel player_view(player);
+
+	return vbox(
+			   {text(player_view.get_name_text()) | bold | color(Color::Cyan),
+				text(health_icon + player_view.get_health_text()) | color(Color::LightSalmon1),
+				text(mp_icon + player_view.get_mana_text()) | color(Color::LightCyan3),
+				text(status_icon + " Status: None") | color(Color::LightYellow3),
+				text(strength_icon + player_view.get_strength_text()) | color(Color::LightSeaGreen),
+				text(defense_icon + player_view.get_defense_text()) |
+					color(Color::LightGoldenrod1)}) |
 		   border;
 }
 
 // Helper function to create enemy info panel
-Element Combat::CreateEnemyInfoPanel(const Enemy& enemy)
+Element Combat::CreateEnemyInfoPanel(Enemy& enemy)
 {
-	const std::string health_icon = "❤ ";
-	const std::string status_icon = "🌀";
-	const std::string strength_icon = "✊";
+	const std::string health_icon = "❤  ";
+	const std::string mp_icon = "💧 ";
+	const std::string status_icon = "🌀 ";
+	const std::string strength_icon = "✊ ";
+	const std::string defense_icon = "🛡  ";
+	const std::string level_icon = "👑 ";
 
-	return vbox({text("Enemy: " + enemy.get_name()) | bold | color(Color::Cyan),
-				 text(health_icon + " HP: " + std::to_string(enemy.get_health()) + " / 50") |
-					 color(Color::LightSalmon1),
-				 text(status_icon + " Status: None") | color(Color::LightYellow3),
-				 text(strength_icon + " Strength: " + std::to_string(enemy.get_strength())) |
-					 color(Color::LightSeaGreen)}) |
+	EnemyViewModel enemy_view(enemy);
+
+	return vbox({
+			   text(enemy_view.get_name_text()) | bold | color(Color::Cyan),
+			   text(level_icon + enemy_view.get_level_text()) | color(Color::LightSlateBlue),
+			   text(enemy_view.get_health_text()) | color(Color::LightSalmon1),
+			   text(status_icon + " Status: None") | color(Color::LightYellow3),
+			   text(strength_icon + enemy_view.get_strength_text()) | color(Color::LightSeaGreen),
+			   text(defense_icon + enemy_view.get_defense_text()) | color(Color::LightGoldenrod1),
+		   }) |
 		   border;
 }
 
@@ -69,7 +75,8 @@ Element Combat::CreateCombatLogPanel(const std::vector<std::string>& combat_log)
 }
 
 // Helper function to create action menu with orange selection
-Component Combat::CreateActionMenu(const std::vector<std::string>& actions, int& selected_action)
+ftxui::Component Combat::CreateActionMenu(const std::vector<std::string>& actions,
+										  int& selected_action)
 {
 	return Menu(&actions, &selected_action); // | color(Color::Orange1)
 }
@@ -86,7 +93,7 @@ void Combat::UpdateCombatLog(std::vector<std::string>& combat_log, const std::st
 	combat_log.push_back(new_entry);
 }
 
-void Combat::display_gui()
+void Combat::display_gui() const
 {
 	auto screen = ScreenInteractive::Fullscreen();
 
@@ -111,7 +118,7 @@ void Combat::display_gui()
 	auto action_menu_component = Container::Vertical({action_menu});
 
 	// Main container to manage focus between the combat log and action menu
-	auto main_container = Container::Vertical({combat_log_component, action_menu_component});
+	const auto main_container = Container::Vertical({combat_log_component, action_menu_component});
 
 	// Main component layout with a title and updated colors
 	auto main_component = Renderer(main_container, [&] {

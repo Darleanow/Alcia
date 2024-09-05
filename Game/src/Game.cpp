@@ -1,13 +1,15 @@
 #include <iostream>
 
-#include "Game.h"
 #include "Combat.h"
+#include "Game.h"
+#include "Player.h"
+#include "PlayerViewModel.h"
 #include "ftxui/component/screen_interactive.hpp"
 
 using namespace ftxui;
 
 Game::Game()
-	: m_game_instance(Player(Health(100), Strength(10), Defense(10), Mana(50)))
+	: m_game_instance(Player("Darleanow", "No Desc", "Bluhin", 100, 50, 20, 10))
 { }
 
 Game::~Game() = default;
@@ -34,12 +36,12 @@ void Game::view_quests()
 
 void Game::search_for_monster()
 {
-	Enemy enemy("Test", "Hello", 50,5,1,50 );
+	auto enemy = m_game_instance.get_enemies_registry().search_monster_by_name("Snowbunny");
 	Combat combat(m_game_instance.get_player(), enemy);
 	combat.display_gui();
 }
 
-Element Game::get_preview(const int selected_index) const
+Element Game::get_preview(const int selected_index)
 {
 	auto create_preview =
 		[](const std::wstring& title, const std::wstring& description, const Color& color) {
@@ -71,7 +73,7 @@ Element Game::get_preview(const int selected_index) const
 	}
 }
 
-Component Game::preview_view_inventory() const
+ftxui::Component Game::preview_view_inventory()
 {
 	return Renderer([] {
 		return window(text(L"Inventory Preview") | center | bold,
@@ -106,56 +108,27 @@ void Game::display_menu()
 	const auto menu = Menu(&menu_entries, &selected_index, menu_option);
 
 	// Create UI Components
-	auto create_text_element = [](const std::wstring& text,
-								  const bool& bold = false,
-								  const Color& color = Color::Default) {
-		return bold ? ftxui::text(text) | ftxui::bold | ftxui::color(color)
-					: ftxui::text(text) | ftxui::color(color);
-	};
+	auto create_text_element =
+		[](const std::string& text, const bool& bold = false, const Color& color = Color::Default) {
+			return bold ? ftxui::text(text) | ftxui::bold | ftxui::color(color)
+						: ftxui::text(text) | ftxui::color(color);
+		};
 
-	auto title = create_text_element(L"Game Menu", true, Color::Orange1) | center | border;
+	auto title = create_text_element("Game Menu", true, Color::Orange1) | center | border;
 	auto stats_title =
-		create_text_element(L"Character Stats", true, Color::Orange3) | center | border;
+		create_text_element("Character Stats", true, Color::Orange3) | center | border;
 
-	auto stats =
-		vbox({
-			create_text_element(L"Name: ???", true, Color::Orange1),
-			create_text_element(
-				L"Level: " + std::to_wstring(m_game_instance.get_player().attributes().get_level()),
-				false,
-				Color::Orange1),
-			create_text_element(
-				L"Health: " +
-					std::to_wstring(
-						m_game_instance.get_player().attributes().get_current_health()) +
-					L"/" +
-					std::to_wstring(m_game_instance.get_player().attributes().get_max_health()),
-				false,
-				Color::Orange1),
+	const PlayerViewModel player_view(m_game_instance.get_player());
 
-			create_text_element(
-				L"Mana: " +
-					std::to_wstring(m_game_instance.get_player().attributes().get_current_mana()) +
-					L"/" +
-					std::to_wstring(m_game_instance.get_player().attributes().get_max_mana()),
-				false,
-				Color::Orange1),
-
-			create_text_element(
-				L"Strength: " +
-					std::to_wstring(m_game_instance.get_player().attributes().get_strength()),
-				false,
-				Color::Orange1),
-			create_text_element(
-				L"Defense: " +
-					std::to_wstring(m_game_instance.get_player().attributes().get_defense()),
-				false,
-				Color::Orange1),
-			// TODO(Darleanow): Use strong types for this too, not a priority right now
-			create_text_element(L"Agility: " + std::to_wstring(15), false, Color::Orange1),
-			create_text_element(L"Intelligence: " + std::to_wstring(5), false, Color::Orange1),
-		}) |
-		flex;
+	auto stats = vbox({
+					 create_text_element(player_view.get_name_text(), true, Color::Orange3),
+					 create_text_element(player_view.get_level_text(), false, Color::Orange1),
+					 create_text_element(player_view.get_health_text(), false, Color::Orange1),
+					 create_text_element(player_view.get_mana_text(), false, Color::Orange1),
+					 create_text_element(player_view.get_strength_text(), false, Color::Orange1),
+					 create_text_element(player_view.get_defense_text(), false, Color::Orange1),
+				 }) |
+				 flex;
 
 	// Fixed Size for Right Pane
 	constexpr auto right_pane_width = 50;
