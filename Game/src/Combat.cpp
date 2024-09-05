@@ -19,7 +19,7 @@ Element Combat::CreatePlayerInfoPanel(Player& player)
 {
 	const std::string health_icon = "❤  ";
 	const std::string mp_icon = "💧 ";
-	const std::string status_icon = "🌀 ";
+	const std::string status_icon = "🌀";
 	const std::string strength_icon = "✊ ";
 	const std::string defense_icon = "🛡  ";
 
@@ -41,7 +41,7 @@ Element Combat::CreateEnemyInfoPanel(Enemy& enemy)
 {
 	const std::string health_icon = "❤  ";
 	const std::string mp_icon = "💧 ";
-	const std::string status_icon = "🌀 ";
+	const std::string status_icon = "🌀";
 	const std::string strength_icon = "✊ ";
 	const std::string defense_icon = "🛡  ";
 	const std::string level_icon = "👑 ";
@@ -51,7 +51,7 @@ Element Combat::CreateEnemyInfoPanel(Enemy& enemy)
 	return vbox({
 			   text(enemy_view.get_name_text()) | bold | color(Color::Cyan),
 			   text(level_icon + enemy_view.get_level_text()) | color(Color::LightSlateBlue),
-			   text(enemy_view.get_health_text()) | color(Color::LightSalmon1),
+			   text(health_icon + enemy_view.get_health_text()) | color(Color::LightSalmon1),
 			   text(status_icon + " Status: None") | color(Color::LightYellow3),
 			   text(strength_icon + enemy_view.get_strength_text()) | color(Color::LightSeaGreen),
 			   text(defense_icon + enemy_view.get_defense_text()) | color(Color::LightGoldenrod1),
