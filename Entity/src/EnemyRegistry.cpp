@@ -88,6 +88,7 @@ void EnemyRegistry::load_monsters(const std::string& json_load_data_file_path)
 							subregion["name"],
 							monster["health"],
 							0,
+							monster["level"],
 							monster["strength"],
 							monster["defense"],
 							monster["rewards"]["experience"],

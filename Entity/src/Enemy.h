@@ -10,6 +10,7 @@ public:
 		  const std::string& region,
 		  int health,
 		  int mana,
+		  int level,
 		  int strength,
 		  int defense,
 		  int experience_reward,

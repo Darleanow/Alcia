@@ -30,7 +30,7 @@ private:
 template <typename T>
 T Level::get_level() const
 {
-	return std::to_string(m_experience);
+	return std::to_string(m_level);
 }
 
 template <>
