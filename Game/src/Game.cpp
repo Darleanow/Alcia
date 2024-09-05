@@ -88,14 +88,13 @@ void Game::display_menu()
 {
 	auto screen = ScreenInteractive::Fullscreen();
 
-	// Combine all entries into a single list
-	const std::vector<std::wstring> menu_entries = {L"🌍 Explore",
-													L"🦇 Search for Monster",
-													L"🏙  Search for a Nearby City",
+	const std::vector<std::wstring> menu_entries = {L"🗺  Explore",
+													L"⚔  Search for Monster",
+													L"🧭 Search for a Nearby City",
 													L"📜 View Quests",
 													L"📦 View Inventory",
-													L"🛏  Rest",
-													L"📝 Save Game",
+													L"💤 Rest",
+													L"💾 Save Game",
 													L"⚙  Game Settings"};
 
 	int selected_index = 0;
