@@ -78,7 +78,9 @@ Element Combat::CreateCombatLogPanel(const std::vector<std::string>& combat_log)
 ftxui::Component Combat::CreateActionMenu(const std::vector<std::string>& actions,
 										  int& selected_action)
 {
-	return Menu(&actions, &selected_action); // | color(Color::Orange1)
+	auto menu_option = MenuOption();
+	menu_option.entries_option.animated_colors.foreground.Set(Color::White, Color::Orange1);
+	return Menu(&actions, &selected_action, menu_option); // | color(Color::Orange1)
 }
 
 // Function to create a title
@@ -112,6 +114,7 @@ void Combat::display_gui() const
 	const std::vector<std::string> actions = {
 		"🗡  Attack", "🛡  Defend", "🧪 Use Item", "💀 Flee"}; //
 	int selected_action = 0;
+
 	auto action_menu = CreateActionMenu(actions, selected_action);
 
 	// Action menu component as a part of a container for focus management
