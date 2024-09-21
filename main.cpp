@@ -1,92 +1,19 @@
-#include "ftxui/component/component.hpp"
-#include "ftxui/component/screen_interactive.hpp"
-#include "ftxui/dom/elements.hpp"
-#include "ftxui/screen/color.hpp"
-#include <iostream>
-#include <memory>
-#include <string>
-#include "Game.h"
-using namespace ftxui;
+#include <saucer/smartview.hpp>
+#include <Frontend/embedded/all.hpp>
 
-/**
- * Sets up the game
- */
-void play_game()
-{
-	Game game;
-	game.run();
-}
+int main() {
+    saucer::smartview smartview;
 
-/**
- * Displays some parameters to configure for an enhanced experience
- */
-void show_options()
-{
-	std::cout << "Displaying options..." << std::endl;
-	// Add your options logic here
-}
+    smartview.set_title("Alcia, Final Version");
+    smartview.set_force_dark_mode(true);
 
-/**
- * Some informations about the dev, project related.
- */
-void show_about()
-{
-	std::cout << "Showing about information..." << std::endl;
-	// Add your about logic here
-}
+    //smartview.set_icon()
 
-/**
- * Exit the game.
- */
-void quit_game()
-{
-	exit(0);
-}
+    smartview.embed(saucer::embedded::all());
+    smartview.serve("index.html");
 
-int main()
-{
-	auto screen = ScreenInteractive::Fullscreen();
+    smartview.show(); // Show the smartview
+    smartview.run(); // And finally enter the run-loop.
 
-	const std::string title = "    Alcia : Revamp    ";
-
-	const std::vector<std::wstring> entries = {L"Play", L"Options", L"About", L"Quit"};
-	int selected = 0;
-
-	auto menu = Menu(&entries, &selected);
-
-	const auto container = Container::Vertical({menu});
-
-	auto main_component = Renderer(container, [&] {
-		return vbox({text(title) | bold | color(Color::Orange3) | border,
-					 menu->Render() | color(Color::Orange1) | border}) |
-			   center | borderHeavy;
-	});
-
-	main_component = CatchEvent(main_component, [&](const Event& event) {
-		if(event == Event::Return)
-		{
-			switch(selected)
-			{
-			case 0:
-				play_game();
-				break;
-			case 1:
-				show_options();
-				break;
-			case 2:
-				show_about();
-				break;
-			case 3:
-				quit_game();
-				break;
-			default:
-				break;
-			}
-			return true;
-		}
-		return false;
-	});
-
-	screen.Loop(main_component);
-	return 0;
+    return 0;
 }

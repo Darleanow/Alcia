@@ -1,29 +1,9 @@
-cmake_minimum_required(VERSION 3.28)
-
-project(Game)
-
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-set(GAME
-        src/Game.cpp
-        src/Game.h
+add_library(Game STATIC
         src/GameInstance.cpp
-        src/GameInstance.h
-        src/utils/EnumTypes.h
-        src/Combat.cpp
-        src/Combat.h
 )
 
-add_library(Game STATIC ${GAME})
-
 target_include_directories(Game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/ViewModels/src)
-target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Entity/src)
-target_include_directories(Game PUBLIC ${CMAKE_SOURCE_DIR}/Map/src)
 
-target_link_libraries(Game PUBLIC Entity ViewModels Map)
+target_link_libraries(Game PRIVATE Entity ViewModels Map)
 
-enable_testing()
-
-add_subdirectory(tests)
+target_compile_features(Game PRIVATE cxx_std_23)

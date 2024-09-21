@@ -1,28 +1,26 @@
-cmake_minimum_required(VERSION 3.28)
-
-project(Entity)
-
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-set(ENTITY
-        src/Entity.cpp
-        src/Entity.h
-        src/Player.cpp
-        src/Player.h
-        src/Enemy.cpp
-        src/Enemy.h
-        src/EnemyRegistry.cpp
-        src/EnemyRegistry.h
-
+add_library(Components STATIC
+        src/Components/src/Health.cpp
+        src/Components/src/Mana.cpp
+        src/Components/src/Strength.cpp
+        src/Components/src/Defense.cpp
+        src/Components/src/Level.cpp
+        src/Components/src/CharacterData.cpp
+        src/Components/src/Rewards.cpp
 )
 
-add_subdirectory(src/Components)
+target_include_directories(Components PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/Components/src)
 
-add_library(Entity STATIC ${ENTITY})
+target_link_libraries(Components PRIVATE Map)
+
+add_library(Entity STATIC
+        src/Entity.cpp
+        src/Player.cpp
+        src/Enemy.cpp
+        src/EnemyRegistry.cpp
+)
 
 target_include_directories(Entity PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories(Map PUBLIC ${CMAKE_SOURCE_DIR}/Map/src)
 
 target_link_libraries(Entity PRIVATE Components Map)
 
+target_compile_features(Entity PRIVATE cxx_std_23)
