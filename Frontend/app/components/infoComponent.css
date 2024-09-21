@@ -1,0 +1,44 @@
+.infoContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(29, 30, 33, 0.85);
+    border-radius: 24px;
+    width: 34vw;
+    margin-top: 1.5em;
+    height: 23vh;
+    align-items: center;
+    gap: 7vw;
+    justify-content: center;
+    transition: border 0.2s ease-in, background-color 0.2s ease-in, box-shadow 0.2s ease-in;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.infoContainer:hover {
+    cursor: pointer;
+    background-color: rgba(50, 50, 50, 0.85);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.infoTitle, .infoSubTitle {
+    font-family: var(--font-pixelify-sans);
+    text-align: center;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+    color: #D3D3D3;
+    transition: color 0.2s ease-in;
+}
+
+.infoValue, .infoSubValue {
+    color: #AFAFAF;
+    text-align: center;
+    font-size: 1.2vw;
+    transition: color 0.2s ease-in;
+}
+
+.infoContainer:hover .infoTitle, .infoContainer:hover .infoSubTitle {
+    color: #F0A500;
+}
+
+.infoContainer:hover .infoValue, .infoContainer:hover .infoSubValue {
+    color: #FFFFFF;
+}

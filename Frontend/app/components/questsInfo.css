@@ -1,0 +1,51 @@
+.containerQuests {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #1a1b1d;
+    border-radius: 24px;
+    padding-bottom: 4vh;
+    margin-top: 2vh;
+    height: 39vh;
+    user-select: none;
+}
+
+.titleQuests {
+    margin-bottom: 2vh;
+    font-family: var(--font-pixelify-sans);
+    text-align: center;
+    font-size: 1.7vw;
+    margin-top: 2vh;
+    color: #D3D3D3;
+}
+
+.quest {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+}
+
+.questTitle {
+    font-family: var(--font-pixelify-sans);
+    color: #F5A12A;
+    font-size: 1.3vw;
+}
+
+.questDetails {
+    margin-top: 1vh;
+    margin-left: 4vw;
+    margin-bottom: 2vh;
+    font-size: 1.1vw;
+}
+
+.completed {
+    color: #76f876;
+}
+
+.notCompleted {
+    color: #f7ca4f;
+}
+
+.notStarted {
+    color: #ff3f3f;
+}

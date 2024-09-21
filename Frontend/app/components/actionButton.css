@@ -1,0 +1,44 @@
+.actionContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(29, 30, 33, 0.9);
+    backdrop-filter: blur(3px);
+    border-radius: 24px;
+    padding: 2vh 1.25vw;
+    margin: 1.203vh .625vw;
+    width: 29vw;
+    height: 13.714vh;
+    gap: 1vh;
+    user-select: none;
+    transition: box-shadow 0.2s ease-in, border 0.2s ease-in, background-color 0.2s ease-in;
+    border: 2px solid transparent;
+}
+
+.actionContainer:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid #F5A12A;
+    background-color: rgba(45, 45, 45, 0.9);
+}
+
+.actionTitle {
+    font-size: 1.5vw;
+    font-family: var(--font-pixelify-sans);
+    color: #F5A12A;
+    transition: color 0.2s ease-in;
+}
+
+.actionDescription {
+    color: #AFAFAF;
+    font-size: 1vw;
+    font-family: var(--font-abeezee);
+    transition: color 0.2s ease-in;
+}
+
+.actionContainer:hover .actionTitle {
+    color: #FFA500;
+}
+
+.actionContainer:hover .actionDescription {
+    color: #FFFFFF;
+}
