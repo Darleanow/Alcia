@@ -1,12 +1,12 @@
 "use client";
 
-import "./home.css";
-import ActionButton from "./actionButton";
-import InfoComponent from "./infoComponent";
-import StatsInfo from "./statsInfo";
-import QuestsInfo from "./questsInfo";
+import "./game.css";
+import ActionButton from "../../components/actionButton/actionButton";
+import InfoComponent from "../../components/infoComponent/infoComponent";
+import StatsInfo from "../../components/statsInfo/statsInfo";
+import QuestsInfo from "../../components/questsInfo/questsInfo";
 
-export default function HomeComponent() {
+export default function Game() {
   return (
     <div className="mainContainer">
       <div>

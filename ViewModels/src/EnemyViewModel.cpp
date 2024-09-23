@@ -6,47 +6,34 @@ EnemyViewModel::EnemyViewModel(Entity& enemy)
 
 EnemyViewModel::~EnemyViewModel() = default;
 
-std::string EnemyViewModel::get_name_text() const
-{
-	const auto name = m_enemy.get_component<CharacterData>("Character Data").get_name();
-	return "Enemy: " + name;
+std::string EnemyViewModel::get_name() const {
+	return m_enemy.get_component<CharacterData>("Character Data").get_name();
 }
 
-std::string EnemyViewModel::get_health_text() const
-{
-	const auto current_health =
-		m_enemy.get_component<Health>("Health").get_health_amount<std::string>();
-	const auto max_health =
-		m_enemy.get_component<Health>("Health").get_max_health_amount<std::string>();
-
-	return "Health: " + current_health + " / " + max_health;
-}
-std::string EnemyViewModel::get_mana_text() const
-{
-	const auto current_mana = m_enemy.get_component<Mana>("Health").get_mana_amount<std::string>();
-	const auto max_mana = m_enemy.get_component<Mana>("Health").get_max_mana_amount<std::string>();
-
-	return "Mana: " + current_mana + " / " + max_mana;
+std::string EnemyViewModel::get_health() const {
+	return m_enemy.get_component<Health>("Health").get_health_amount<std::string>();
 }
 
-std::string EnemyViewModel::get_level_text() const
-{
-	const auto level = m_enemy.get_component<Level>("Level").get_level<std::string>();
-
-	return "Level: " + level;
+std::string EnemyViewModel::get_max_health() const {
+	return m_enemy.get_component<Health>("Health").get_max_health_amount<std::string>();
 }
 
-std::string EnemyViewModel::get_strength_text() const
-{
-	const auto strength = m_enemy.get_component<Strength>("Strength").get_strength<std::string>();
-
-	return "Strength: " + strength;
+std::string EnemyViewModel::get_mana() const {
+	return m_enemy.get_component<Mana>("Mana").get_mana_amount<std::string>();
 }
 
-// todo(Enzo): Maybe display with the defense value the percentage of damage reduced
-std::string EnemyViewModel::get_defense_text() const
-{
-	const auto defense = m_enemy.get_component<Defense>("Defense").get_defense<std::string>();
+std::string EnemyViewModel::get_max_mana() const {
+	return m_enemy.get_component<Mana>("Mana").get_max_mana_amount<std::string>();
+}
 
-	return "Defense: " + defense;
+std::string EnemyViewModel::get_level() const {
+	return m_enemy.get_component<Level>("Level").get_level<std::string>();
+}
+
+std::string EnemyViewModel::get_strength() const {
+	return m_enemy.get_component<Strength>("Strength").get_strength<std::string>();
+}
+
+std::string EnemyViewModel::get_defense() const {
+	return m_enemy.get_component<Defense>("Defense").get_defense<std::string>();
 }

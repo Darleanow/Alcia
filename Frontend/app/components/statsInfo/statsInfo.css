@@ -7,7 +7,6 @@
     padding-bottom: 4vh;
     height: 40vh;
     justify-content: center;
-    user-select: none;
 }
 
 .title {
@@ -21,7 +20,7 @@
 .stats {
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 1vw;
     font-size: 1.1vw;
     justify-content: center;
     margin-top: 2vh;

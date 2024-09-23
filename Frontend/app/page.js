@@ -1,19 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "./components/navbar";
-import HomeComponent from "./components/home";
+import TitleScreen from "./pages/TitleScreen/titleScreen";
+import Navbar from "./components/navbar/navbar";
+import Game from "./pages/Game/game";
 
 export default function Home() {
-  const [activeLink, setActiveLink] = useState("Home"); // State managed here
+  const [currentRoute, setCurrentRoute] = useState("TitleScreen");
+  const [activeLink, setActiveLink] = useState("Home");
 
   return (
     <>
-      <Navbar activeLink={activeLink} setActiveLink={setActiveLink} />
+      {currentRoute === "TitleScreen" && <TitleScreen setCurrentRoute={setCurrentRoute} />}
+      {currentRoute === "Game" && (
+        <>
+          <Navbar activeLink={activeLink} setActiveLink={setActiveLink} />
 
-      {activeLink === "Home" && <HomeComponent />}
-      {activeLink === "Wiki" && <div>Wiki Component or Content</div>}
-      {activeLink === "Settings" && <div>Settings Component or Content</div>}
+          {activeLink === "Home" && <Game />}
+          {activeLink === "Wiki" && <div>Wiki Component or Content</div>}
+          {activeLink === "Settings" && <div>Settings Component or Content</div>}
+        </>
+      )}
     </>
   );
 }

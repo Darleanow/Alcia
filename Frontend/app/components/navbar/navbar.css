@@ -1,4 +1,4 @@
-@import "../globals.css";
+@import "../../globals.css";
 .container {
     display: flex;
     flex-direction: row;
@@ -6,7 +6,6 @@
     background-color: #1D1E21;
     border-radius: 24px;
     margin: 1em 1.5em;
-    user-select: none;
 }
 
 .logo {

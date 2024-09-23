@@ -1,20 +1,22 @@
 #pragma once
+#include <PlayerViewModel.h>
+
 #include "EnemyRegistry.h"
 #include "Map.h"
 #include "Player.h"
 
 class GameInstance {
 public:
-    explicit GameInstance(const Player &player);
+    explicit GameInstance(const std::optional<Player> &player);
 
     ~GameInstance();
 
-    [[nodiscard]] Player &get_player();
+    [[nodiscard]] PlayerViewModel get_player_view_model();
 
     [[nodiscard]] EnemyRegistry &get_enemies_registry();
 
 private:
-    Player m_player;
+    std::optional<Player> m_player;
     Map m_map;
     EnemyRegistry m_monster_registry;
 };
