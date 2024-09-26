@@ -39,11 +39,11 @@
     stroke: #F15757;
 }
 
-svg:hover {
+.svg_container:hover {
     cursor: pointer;
 }
 
-svg:hover .navbar_icon,
-svg:hover path {
+.svg_container:hover .navbar_icon,
+.svg_container:hover path {
     stroke: #F5A12A;
 }
