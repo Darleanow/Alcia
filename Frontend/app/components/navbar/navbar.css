@@ -1,70 +1,49 @@
-@import "../../globals.css";
-.container {
+.navbar_container {
     display: flex;
-    flex-direction: row;
-    height: 10vh;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 3.241vw;
+    height: calc(100vh - 6.24vh);
     background-color: #1D1E21;
-    border-radius: 24px;
-    margin: 1em 1.5em;
+    align-items: center;
+    border-radius: 16px;
+    margin-left: 1.72vw;
+    margin-top: 3.87vh;
+    padding: 0 0.728vw;
 }
 
-.logo {
+.navbar_top_container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 3em;
+    flex-direction: column;
+    gap: 3.157vh;
+    margin-top: 2.24vh;
+
 }
 
-.logoImg {
-    background-color: #F5A12A;
-    border-radius: 8px;
-    justify-content: center;
-    align-items: center;
-    padding: .1em;
-}
-
-.logoText {
-    margin-left: 4vh;
-    font-family: var(--font-pixelify-sans);
-    font-size: 1.5vw;
-}
-
-.links {
+.navbar_bottom_container {
     display: flex;
-    flex-direction: row;
-    margin-left: 9vw;
-    gap: 8vw;
-    align-items: center;
+    flex-direction: column;
+    gap: 2.037vh;
+    margin-bottom: 2.24vh;
 }
 
-.link {
-    font-family: var(--font-pixelify-sans);
-    background: none;
-    border: none;
-    color: #ededed;
-    font-size: 1vw;
-    position: relative;
+.navbar_icon {
+    stroke: rgb(255, 255, 255);
+}
+
+.navbar_icon_selected {
+    stroke: #F5A12A;
+}
+
+.navbar_icon_exit {
+    stroke: #F15757;
+}
+
+svg:hover {
     cursor: pointer;
-    text-decoration: none;
 }
 
-.link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    height: 2px;
-    width: 100%;
-    background-color: #F5A12A;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease-out;
-}
-
-.link:hover::after {
-    transform: scaleX(1);
-}
-
-.active::after {
-    transform: scaleX(1);
+svg:hover .navbar_icon,
+svg:hover path {
+    stroke: #F5A12A;
 }
