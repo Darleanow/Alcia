@@ -1,0 +1,51 @@
+.topbar_container {
+    display: flex;
+    flex-direction: row;
+    background-color: #1D1E21;
+    height: 4.99vh;
+    align-items: center;
+    width: calc(100vw - 7.275vw - 2.844vw);
+    border-radius: 16px;
+    justify-content: center;
+}
+
+.level_text {
+    font-size: 0.926vw;
+}
+
+.health_bar_container, .mana_bar_container, .energy_bar_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 8px;
+    margin-left: 1.2vw;
+}
+
+.health_bar_background, .mana_bar_background, .energy_bar_background {
+    width: 18.32vw;
+    border-radius: 16px;
+    height: 0.509vh;
+    background-color: #6D6D6D;
+}
+
+.health_bar_value, .mana_bar_value, .energy_bar_value {
+    height: 100%;
+    border-radius: 16px;
+}
+
+.health_bar_value {
+    background-color: #F15757; /* Health bar color */
+}
+
+.mana_bar_value {
+    background-color: #7489F1; /* Mana bar color */
+}
+
+.energy_bar_value {
+    background-color: #F1D874; /* Energy bar color */
+}
+
+.health_text, .mana_text, .energy_text {
+    margin-left: 1.455vw;
+    font-size: 0.926vw;
+}

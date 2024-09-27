@@ -1,0 +1,9 @@
+.main_game_screen {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3.87vh;
+}
+
+.game_screen {
+    margin-left: 2.315vw;
+}
