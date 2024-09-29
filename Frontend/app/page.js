@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import Navbar from "./components/Navbar/Navbar";
 import TopBar from "./components/TopBar/TopBar";
 import Resource from "./components/Resource/Resource";
+import MoneyAndSoulsComponent from "./components/MoneyAndSoulsComponent/MoneyAndSoulsComponent";
 
 export default function Home() {
   return (
@@ -138,7 +139,7 @@ export default function Home() {
               },
             ]}
           />
-          <Resource />
+          <MoneyAndSoulsComponent money={548} souls={12}/>
         </div>
       </div>
     </div>

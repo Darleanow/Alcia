@@ -1,0 +1,24 @@
+.container {
+    background-color: #1D1E21;
+    border: 0.5px solid rgba(189, 189, 189, 0.2);
+    border-radius: 16px;
+    height: 6.008vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2.579vw;
+}
+
+.money, .souls{
+    display: flex;
+    align-items: center;
+}
+
+.money_icon {
+    stroke: #F1D874;
+}
+
+.money_text, .souls_text {
+    font-size: 0.926vw;
+    margin-left: 0.741vw;
+}
