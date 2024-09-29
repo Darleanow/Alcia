@@ -1,0 +1,131 @@
+.resource_container {
+    background-color: #1D1E21;
+    border: 0.5px solid rgba(189, 189, 189, 0.2);
+    width: 100%;
+    border-radius: 24px;
+    height: 36.762vh;
+    padding-top: 2.9vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 2.9vh;
+}
+
+.resources {
+    display: flex;
+    flex-direction: column;
+    gap: 1.12vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 1.058vw;
+}
+
+.resources::-webkit-scrollbar {
+    width: 0.265vw;
+}
+
+.resources::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #141516;
+    border-radius: 10px;
+}
+
+.resources::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px #6D6D6D;
+}
+
+.resource {
+    display: flex;
+    justify-content: space-between;
+    border: 0.5px solid #5A5A5A;
+    width: 23.876vw;
+    height: 6.823vh;
+    border-radius: 12px;
+    flex-shrink: 0;
+    padding-left: 1.587vw;
+    padding-top: 1.629vh;
+    padding-right: 1.786vw;
+}
+
+/* .resource:hover {
+    background-color: #2D2E31;
+    cursor: pointer;
+    border: 0.5px solid #949494;
+} */
+
+.resource_top_bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.resource_name {
+    color: #F1D874;
+    font-size: 0.926vw;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.resource_expire_time {
+    color: #6D6D6D;
+    font-size: 0.926vw;
+    margin-left: 0.397vw;
+}
+
+.resource_name:hover {
+    color: #f5e296;
+}
+
+.resource_stat {
+    display: flex;
+    flex-direction: row;
+    gap: 0.926vw;
+    margin-top: 0.7vh;
+}
+
+.resource_health,
+.resource_strength,
+.resource_defense {
+    font-size: 0.7vw;
+    display: flex;
+}
+
+.light_red {
+    color: #F15757;
+}
+
+.light_orange {
+    color: #F5A12A;
+}
+
+.light_blue {
+    color: #7489F1;
+}
+
+.go_button {
+    stroke: #6D6D6D;
+}
+
+.go_button_parent:hover {
+    cursor: pointer;
+}
+
+.go_button_parent:hover .go_button {
+    stroke: #F5A12A;
+}
+
+.resource_drop{
+    display: flex;
+    gap: 0.265vw;
+    font-size: 0.7vw;
+}
+
+.drop_name {
+    color: #59C64F;
+    text-decoration: underline
+}
+
+.drop_name:hover {
+    color: #7ce072;
+    cursor: pointer;
+}
